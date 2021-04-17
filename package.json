@@ -1,0 +1,21 @@
+{
+  "name": "@lizhineng/tailwindcss-wechat-mini-program",
+  "version": "0.0.1",
+  "description": "A plugin which helps you using TailwindCSS in WeChat Mini Program.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizhineng/tailwindcss-wechat-mini-program.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lizhineng/tailwindcss-wechat-mini-program/issues"
+  },
+  "homepage": "https://github.com/lizhineng/tailwindcss-wechat-mini-program#readme",
+  "devDependencies": {
+    "tailwindcss": "^2.1.1"
+  }
+}
