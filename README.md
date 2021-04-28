@@ -1,6 +1,6 @@
-# @lizhineng/tailwindcss-wechat-mini-program
+# @lizhineng/tailwindcss-wechat-miniprogram
 
-A plugin which helps you using TailwindCSS in WeChat Mini Program.
+A preset which helps you using Tailwind CSS in WeChat Mini Program.
 
 ## Installation
 
@@ -8,19 +8,19 @@ Install the plugin from npm:
 
 ```sh
 # Using npm
-npm install @lizhineng/tailwindcss-wechat-mini-program
+npm install @lizhineng/tailwindcss-wechat-miniprogram
 
 # Using Yarn
-yarn add @lizhineng/tailwindcss-wechat-mini-program
+yarn add @lizhineng/tailwindcss-wechat-miniprogram
 ```
 
-Then add the plugin to your `tailwind.config.js` file:
+Then add the preset to your `tailwind.config.js` file:
 
 ```js
 // tailwind.config.js
 module.exports = {
   presets: [
-    require('@lizhineng/tailwindcss-wechat-mini-program')
+    require('@lizhineng/tailwindcss-wechat-miniprogram')
   ],
   // ...
 }

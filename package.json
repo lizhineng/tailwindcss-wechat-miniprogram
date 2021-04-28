@@ -1,7 +1,7 @@
 {
-  "name": "@lizhineng/tailwindcss-wechat-mini-program",
+  "name": "@lizhineng/tailwindcss-wechat-miniprogram",
   "version": "0.0.1",
-  "description": "A plugin which helps you using TailwindCSS in WeChat Mini Program.",
+  "description": "A preset which helps you using TailwindCSS in WeChat Mini Program.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

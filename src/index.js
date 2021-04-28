@@ -1,7 +1,19 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  purge: {
+    content: [
+      './src/**/*.wxml',
+    ],
+    options: {
+      extractors: [
+        {
+          extractor: content => content.match(/[^<>~"'`\s]*[^<>~"'`\s:]/g) || [],
+          extensions: ['wxml']
+        }
+      ]
+    }
+  },
   separator: '_',
+  darkMode: false, // or 'media' or 'class'
   corePlugins: {
     preflight: false,
     space: false,
@@ -9,8 +21,12 @@ module.exports = {
     divideColor: false,
     divideOpacity: false,
     divideStyle: false,
+    boxShadow: false,
     ringWidth: false,
-    boxShadow: false
+    ringColor: false,
+    ringOpacity: false,
+    ringOffsetWidth: false,
+    ringOffsetColor: false,
   },
   theme: {
     screens: {
@@ -154,12 +170,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('./mpSpace'),
-    require('./mpDivideWidth'),
-    require('./mpDivideColor'),
-    require('./mpDivideOpacity'),
-    require('./mpDivideStyle'),
-    require('./mpRingWidth'),
-    require('./mpBoxShadow'),
+    require('./plugins/base'),
   ],
 }
