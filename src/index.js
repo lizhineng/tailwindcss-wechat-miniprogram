@@ -1,175 +1,42 @@
+import resolveConfig from 'tailwindcss/resolveConfig'
+import { replaceModifier } from './utilities'
+
+const defaultConfig = resolveConfig(require('tailwindcss/stubs/config.full'))
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: {
-    content: [
-      './src/**/*.wxml',
-    ],
-    options: {
-      extractors: [
-        {
-          extractor: content => content.match(/[^<>~"'`\s]*[^<>~"'`\s:]/g) || [],
-          extensions: ['wxml']
-        }
-      ]
-    }
-  },
   separator: '_',
-  darkMode: false, // or 'media' or 'class'
   corePlugins: {
     preflight: false,
-    space: false,
-    divideWidth: false,
-    divideColor: false,
-    divideOpacity: false,
-    divideStyle: false,
-    boxShadow: false,
-    ringWidth: false,
-    ringColor: false,
-    ringOpacity: false,
-    ringOffsetWidth: false,
-    ringOffsetColor: false,
+    container: false
   },
   theme: {
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      xxl: '1536px',
-    },
-    spacing: {
-      px: '1px',
-      0: '0px',
-      '0_5': '0.125rem',
-      1: '0.25rem',
-      '1_5': '0.375rem',
-      2: '0.5rem',
-      '2_5': '0.625rem',
-      3: '0.75rem',
-      '3_5': '0.875rem',
-      4: '1rem',
-      5: '1.25rem',
-      6: '1.5rem',
-      7: '1.75rem',
-      8: '2rem',
-      9: '2.25rem',
-      10: '2.5rem',
-      11: '2.75rem',
-      12: '3rem',
-      14: '3.5rem',
-      16: '4rem',
-      20: '5rem',
-      24: '6rem',
-      28: '7rem',
-      32: '8rem',
-      36: '9rem',
-      40: '10rem',
-      44: '11rem',
-      48: '12rem',
-      52: '13rem',
-      56: '14rem',
-      60: '15rem',
-      64: '16rem',
-      72: '18rem',
-      80: '20rem',
-      96: '24rem',
-    },
-    height: (theme) => ({
-      auto: 'auto',
-      ...theme('spacing'),
-      '1_2': '50%',
-      '1_3': '33.333333%',
-      '2_3': '66.666667%',
-      '1_4': '25%',
-      '2_4': '50%',
-      '3_4': '75%',
-      '1_5': '20%',
-      '2_5': '40%',
-      '3_5': '60%',
-      '4_5': '80%',
-      '1_6': '16.666667%',
-      '2_6': '33.333333%',
-      '3_6': '50%',
-      '4_6': '66.666667%',
-      '5_6': '83.333333%',
-      full: '100%',
-      screen: '100vh',
-    }),
-    inset: (theme, { negative }) => ({
-      auto: 'auto',
-      ...theme('spacing'),
-      ...negative(theme('spacing')),
-      '1_2': '50%',
-      '1_3': '33.333333%',
-      '2_3': '66.666667%',
-      '1_4': '25%',
-      '2_4': '50%',
-      '3_4': '75%',
-      full: '100%',
-      '-1_2': '-50%',
-      '-1_3': '-33.333333%',
-      '-2_3': '-66.666667%',
-      '-1_4': '-25%',
-      '-2_4': '-50%',
-      '-3_4': '-75%',
-      '-full': '-100%',
-    }),
-    translate: (theme, { negative }) => ({
-      ...theme('spacing'),
-      ...negative(theme('spacing')),
-      '1_2': '50%',
-      '1_3': '33.333333%',
-      '2_3': '66.666667%',
-      '1_4': '25%',
-      '2_4': '50%',
-      '3_4': '75%',
-      full: '100%',
-      '-1_2': '-50%',
-      '-1_3': '-33.333333%',
-      '-2_3': '-66.666667%',
-      '-1_4': '-25%',
-      '-2_4': '-50%',
-      '-3_4': '-75%',
-      '-full': '-100%',
-    }),
-    width: (theme) => ({
-      auto: 'auto',
-      ...theme('spacing'),
-      '1_2': '50%',
-      '1_3': '33.333333%',
-      '2_3': '66.666667%',
-      '1_4': '25%',
-      '2_4': '50%',
-      '3_4': '75%',
-      '1_5': '20%',
-      '2_5': '40%',
-      '3_5': '60%',
-      '4_5': '80%',
-      '1_6': '16.666667%',
-      '2_6': '33.333333%',
-      '3_6': '50%',
-      '4_6': '66.666667%',
-      '5_6': '83.333333%',
-      '1_12': '8.333333%',
-      '2_12': '16.666667%',
-      '3_12': '25%',
-      '4_12': '33.333333%',
-      '5_12': '41.666667%',
-      '6_12': '50%',
-      '7_12': '58.333333%',
-      '8_12': '66.666667%',
-      '9_12': '75%',
-      '10_12': '83.333333%',
-      '11_12': '91.666667%',
-      full: '100%',
-      screen: '100vw',
-      min: 'min-content',
-      max: 'max-content',
-    }),
-  },
-  variants: {
+    // e.g., basis-1/4 -> basic-1-4
+    flexBasis: replaceModifier(defaultConfig.theme.flexBasis, '/', '-'),
+
+    // e.g., from-50% -> from-50
+    gradientColorStopPositions: replaceModifier(
+      defaultConfig.theme.gradientColorStopPositions, '%', ''
+    ),
+
+    // e.g., h-2/4 -> h-2-4
+    height: replaceModifier(defaultConfig.theme.height, '/', '-'),
+
+    // e.g., mt-2.5 -> mt-2p5
+    spacing: replaceModifier(defaultConfig.theme.spacing, '.', 'p'),
+
+    // e.g., translate-y-3/4 -> translate-y-3-4
+    translate: replaceModifier(defaultConfig.theme.translate, '/', '-'),
+
+    // e.g., w-6/12 -> w-6-12
+    width: replaceModifier(defaultConfig.theme.width, '/', '-'),
+
     extend: {},
   },
   plugins: [
-    require('./plugins/base'),
+    require('./plugins/base')
   ],
+  experimental: {
+    optimizeUniversalDefaults: true
+  }
 }
