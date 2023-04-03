@@ -1,9 +1,9 @@
-const fs = require('fs')
-const plugin = require('tailwindcss/plugin')
+import { readFileSync } from 'fs'
+import plugin from 'tailwindcss/plugin'
 
-module.exports = plugin(
+export default plugin(
   function ({ addBase, postcss }) {
-    const styles = postcss.parse(fs.readFileSync(`${__dirname}/base.css`, 'utf-8'))
+    const styles = postcss.parse(readFileSync(`${__dirname}/base.css`, 'utf-8'))
 
     addBase(styles.nodes)
   }
