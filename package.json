@@ -1,6 +1,6 @@
 {
   "name": "@lizhineng/tailwindcss-wechat-miniprogram",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A preset which helps you using TailwindCSS in WeChat Mini Program.",
   "main": "src/index.js",
   "scripts": {
